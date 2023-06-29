@@ -1,18 +1,45 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <form @submit.prevent="displayData">
+      <div>
+        <input type="text" v-model="firstName" placeholder="firstName" required>
+      </div>
+      <div>
+      <input type="text" v-model="lastName" placeholder="lastName" required>
+      </div>
+      <div>
+        <!-- <label>{{firstName}}-{{lastName}}</label> -->
+        <label id="output"></label>
+      </div>
+      <div><button @click="displayData">Submit
+      </button></div>
+    </form>
+    </div>
+
+ 
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+  export default {
+    name:'HomeView',
+    components:{
+    },
+    data(){
+      return{
+        firstName:'',
+lastName:''
+    
+      }
+    },
+      methods:{
+        displayData(){
+          document.querySelector('#output').textContent=`${this.firstName}${this.lastName}`
+        }
+      }
+    
   }
-}
 </script>
+
+<style scoped>
+
+</style>
